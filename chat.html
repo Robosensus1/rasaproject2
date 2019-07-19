@@ -1,0 +1,45 @@
+<html>
+<body>
+<head> 
+ <style>
+body {
+  background-image: url("https://i.postimg.cc/KcDHxRY2/Capture.png");
+  background-repeat: no-repeat;
+   background-size: cover;
+}
+</style>
+</head>
+
+<div id="webchat"/>
+<script src="https://storage.googleapis.com/mrbot-cdn/webchat-0.5.8.js"></script>
+<script>
+  WebChat.default.init({
+    selector: "#webchat",
+    initPayload: "/get_started",
+    interval: 1000, // 1000 ms between each message
+    customData: {"userId": "123"}, // arbitrary custom data. Stay minimal as this will be added to the socket
+    socketUrl: "http://localhost:5005",
+    socketPath: "/socket.io/",
+    title: "Infra Bot",
+    inputTextFieldHint: "Type a message...",
+    connectingText: "Waiting for server...",
+    hideWhenNotConnected: true,
+    fullScreenMode: false,
+    profileAvatar: "https://cdn.pixabay.com/photo/2015/06/12/18/31/cute-807306__340.png",
+    openLauncherImage: 'https://www.peerbits.com/wp-content/uploads/2018/01/chat-bot-call-to-action-white-paper1.png',
+    closeLauncherImage: 'https://www.peerbits.com/wp-content/uploads/2018/01/chat-bot-call-to-action-white-paper1.png',
+     params: {
+      images: {
+        dims: {
+          width: 300,
+          height: 200,
+        }
+      },
+      storage: "session"
+    }
+  })
+</script>
+</body>
+</html>
+
+

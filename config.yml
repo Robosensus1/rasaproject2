@@ -1,0 +1,33 @@
+# Configuration for Rasa NLU.
+# https://rasa.com/docs/rasa/nlu/components/
+language: en
+
+
+
+pipeline:
+- name : "nlp_spacy"
+- name: "tokenizer_whitespace"
+- name: "intent_entity_featurizer_regex"
+- name: "ner_crf"
+  features: [
+              ["low", "upper"],
+              ["bias", "low", "prefix5", "prefix2", "suffix5", "suffix3",
+               "suffix2", "upper", "digit", "pattern"],
+              ["low", "upper"]
+            ]
+- name: "ner_synonyms"
+- name: "intent_featurizer_count_vectors"
+- name: "intent_classifier_tensorflow_embedding"
+  intent_tokenization_flag: true
+  intent_split_symbol: "+"
+
+# Configuration for Rasa Core.
+# https://rasa.com/docs/rasa/core/policies/
+policies:
+  - name: MemoizationPolicy
+  - name: KerasPolicy
+  - name: MappingPolicy
+
+
+
+
